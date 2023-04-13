@@ -7,12 +7,12 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/playButton"
+        android:id="@+id/startButton"
         android:layout_width="100dp"
         android:layout_height="53dp"
         android:layout_marginBottom="56dp"
         android:backgroundTint="#00FF00"
-        android:text="Play"
+        android:text="Start"
         app:layout_constraintBottom_toTopOf="@+id/stopButton"
         app:layout_constraintEnd_toStartOf="@+id/stopButton"
         app:layout_constraintStart_toStartOf="parent" />
