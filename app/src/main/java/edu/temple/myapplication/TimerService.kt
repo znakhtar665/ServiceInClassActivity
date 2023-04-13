@@ -43,6 +43,11 @@ class TimerService : Service() {
 
     }
 
+    override fun onCreate() {
+        super.onCreate()
+
+        Log.d("TimerService status", "Created")
+    }
 
     override fun onBind(intent: Intent): IBinder {
         return TimerBinder()
@@ -80,6 +85,20 @@ class TimerService : Service() {
             }
         }
 
+    }
+
+    override fun onUnbind(intent: Intent?): Boolean {
+        if (::t.isInitialized) {
+            t.interrupt()
+        }
+
+        return super.onUnbind(intent)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        Log.d("TimerService status", "Destroyed")
     }
 
 
