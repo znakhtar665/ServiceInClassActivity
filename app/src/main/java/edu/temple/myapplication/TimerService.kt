@@ -12,6 +12,8 @@ class TimerService : Service() {
 
     private var isRunning = false
 
+    private var timerHandler : Handler? = null
+
     lateinit var t: TimerThread
 
     private var paused = false
@@ -34,6 +36,10 @@ class TimerService : Service() {
             } else {
                 pause()
             }
+        }
+
+        fun setHandler(handler: Handler) {
+            timerHandler = handler
         }
 
         // Stop a currently running timer
@@ -80,8 +86,10 @@ class TimerService : Service() {
                 for (i in startValue downTo 1)  {
                     Log.d("Countdown", i.toString())
 
-                        while (paused);
-                        sleep(1000)
+                    timerHandler?.sendEmptyMessage(i)
+
+                    while (paused);
+                    sleep(1000)
 
                 }
                 isRunning = false
