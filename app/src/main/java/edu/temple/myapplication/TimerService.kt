@@ -21,9 +21,12 @@ class TimerService : Service() {
     inner class TimerBinder : Binder() {
 
         // Check if Timer is already running
-        var isRunning: Boolean
+        val isRunning: Boolean
             get() = this@TimerService.isRunning
-            set(value) {this@TimerService.isRunning = value}
+
+        // Check if Timer is already running
+        val paused: Boolean
+            get() = this@TimerService.paused
 
         // Start a new timer
         fun start(startValue: Int){
